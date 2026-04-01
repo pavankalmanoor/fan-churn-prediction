@@ -1,0 +1,10 @@
+artifact_location: file:///Users/pavan/fan-churn-prediction/mlruns/752632584645856201/models/m-739a4be2f9b941fc8365d5d917bb1ac7/artifacts
+creation_timestamp: 1775017762179
+experiment_id: '752632584645856201'
+last_updated_timestamp: 1775017764036
+model_id: m-739a4be2f9b941fc8365d5d917bb1ac7
+model_type: null
+name: XGBoost
+source_run_id: 06d3e9df08114df79d05752842224eb6
+status: 2
+status_message: null

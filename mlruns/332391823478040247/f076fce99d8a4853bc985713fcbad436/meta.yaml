@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/pavan/fan-churn-prediction/mlruns/332391823478040247/f076fce99d8a4853bc985713fcbad436/artifacts
+end_time: 1775018044444
+entry_point_name: ''
+experiment_id: '332391823478040247'
+lifecycle_stage: active
+run_id: f076fce99d8a4853bc985713fcbad436
+run_name: XGBoost_rolling_sentiment
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1775018041816
+status: 3
+tags: []
+user_id: pavan

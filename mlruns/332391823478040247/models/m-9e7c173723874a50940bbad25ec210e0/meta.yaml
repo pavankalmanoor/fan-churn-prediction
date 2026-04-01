@@ -1,0 +1,10 @@
+artifact_location: file:///Users/pavan/fan-churn-prediction/mlruns/332391823478040247/models/m-9e7c173723874a50940bbad25ec210e0/artifacts
+creation_timestamp: 1775017910397
+experiment_id: '332391823478040247'
+last_updated_timestamp: 1775017911805
+model_id: m-9e7c173723874a50940bbad25ec210e0
+model_type: null
+name: LogisticRegression
+source_run_id: f473a858db3944be810456b34eb485f9
+status: 2
+status_message: null

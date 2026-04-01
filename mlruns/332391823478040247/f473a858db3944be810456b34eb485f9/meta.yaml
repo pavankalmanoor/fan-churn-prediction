@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/pavan/fan-churn-prediction/mlruns/332391823478040247/f473a858db3944be810456b34eb485f9/artifacts
+end_time: 1775017911810
+entry_point_name: ''
+experiment_id: '332391823478040247'
+lifecycle_stage: active
+run_id: f473a858db3944be810456b34eb485f9
+run_name: LogisticRegression
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1775017909318
+status: 3
+tags: []
+user_id: pavan

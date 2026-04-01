@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/pavan/fan-churn-prediction/mlruns/752632584645856201/5ce7408bb5a641888665dde55b4ca763/artifacts
+end_time: 1775017765703
+entry_point_name: ''
+experiment_id: '752632584645856201'
+lifecycle_stage: active
+run_id: 5ce7408bb5a641888665dde55b4ca763
+run_name: RandomForest
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1775017764042
+status: 3
+tags: []
+user_id: pavan

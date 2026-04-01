@@ -1,0 +1,10 @@
+artifact_location: file:///Users/pavan/fan-churn-prediction/mlruns/752632584645856201/models/m-4d85510aab394c77908c210f56cef508/artifacts
+creation_timestamp: 1775017764093
+experiment_id: '752632584645856201'
+last_updated_timestamp: 1775017765699
+model_id: m-4d85510aab394c77908c210f56cef508
+model_type: null
+name: RandomForest
+source_run_id: 5ce7408bb5a641888665dde55b4ca763
+status: 2
+status_message: null

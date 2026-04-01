@@ -1,0 +1,7 @@
+artifact_location: file:///Users/pavan/fan-churn-prediction/mlruns/332391823478040247
+creation_time: 1775017904068
+experiment_id: '332391823478040247'
+last_update_time: 1775017904068
+lifecycle_stage: active
+name: fan-churn-tweet-level
+workspace: default

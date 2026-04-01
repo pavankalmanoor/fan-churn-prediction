@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/pavan/fan-churn-prediction/mlruns/332391823478040247/bd45f969525547feb53ac3d847b0f144/artifacts
+end_time: 1775017961722
+entry_point_name: ''
+experiment_id: '332391823478040247'
+lifecycle_stage: active
+run_id: bd45f969525547feb53ac3d847b0f144
+run_name: XGBoost_no_leakage
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1775017959676
+status: 3
+tags: []
+user_id: pavan

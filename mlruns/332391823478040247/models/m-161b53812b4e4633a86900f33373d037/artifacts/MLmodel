@@ -1,0 +1,23 @@
+artifact_path: file:///Users/pavan/fan-churn-prediction/mlruns/332391823478040247/models/m-161b53812b4e4633a86900f33373d037/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.13.7
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.8.0
+    skops_trusted_types: null
+mlflow_version: 3.10.1
+model_id: m-161b53812b4e4633a86900f33373d037
+model_size_bytes: 148713
+model_uuid: m-161b53812b4e4633a86900f33373d037
+prompts: null
+run_id: bd45f969525547feb53ac3d847b0f144
+utc_time_created: '2026-04-01 04:32:39.965778'
