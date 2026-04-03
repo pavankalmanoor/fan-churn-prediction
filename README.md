@@ -1,36 +1,28 @@
-# Fan Sentiment Risk Analysis & API
+# Fan Sentiment Risk Analysis and API
 
-> NLP-powered fan sentiment analysis and churn risk scoring system built with HuggingFace RoBERTa, MLflow, and FastAPI
+NLP and machine learning project for estimating airline-level churn risk from social media sentiment. The repository combines transformer-based sentiment analysis, feature engineering, model evaluation, experiment tracking, and a FastAPI service for inference.
 
----
+## Overview
 
-## 🎯 Project Overview
+The project analyzes 14,640 airline tweets and translates sentiment signals into airline-level risk indicators. It is designed as a portfolio project that demonstrates practical NLP, model evaluation, and lightweight API delivery.
 
-Analyzes 14,640 airline tweets using transformer-based NLP to identify at-risk fan communities and predict churn signals. Delivers results via a production-ready REST API with real-time inference.
+## Workflow
 
-**Pipeline:**
-```
-Raw Tweets (14,640)
-        ↓
-HuggingFace RoBERTa (twitter-roberta-base-sentiment-latest)
-        ↓
-Sentiment Classification (Positive / Neutral / Negative)
-        ↓
-Feature Engineering (13 behavioral + sentiment features)
-        ↓
-Risk Scoring Engine (Composite 0-100 score)
-        ↓
-FastAPI REST API (6 endpoints)
+```text
+Airline tweets
+  -> RoBERTa sentiment classification
+  -> tweet-level and airline-level feature engineering
+  -> churn-risk scoring
+  -> model evaluation and SHAP analysis
+  -> FastAPI service for inference
 ```
 
----
-
-## 📊 Results & Visualizations
+## Results
 
 ### Exploratory Data Analysis
 ![EDA](data/eda_plots.png)
 
-### Fan Sentiment Risk Dashboard
+### Risk Dashboard
 ![Risk Dashboard](data/risk_dashboard.png)
 
 ### Airline Risk Scores
@@ -42,122 +34,86 @@ FastAPI REST API (6 endpoints)
 ### Model Evaluation
 ![Confusion Matrix](data/confusion_matrix.png)
 
----
+## Key Findings
 
-## 🏆 Key Results
+- RoBERTa provides stronger domain fit than simple lexicon-based sentiment methods for airline tweets.
+- Airline-level sentiment patterns are sufficiently distinct to support useful risk ranking.
+- Complaint intensity clusters during predictable time windows, which can inform support staffing.
+- The repo demonstrates a full loop from experimentation to API exposure.
 
-| Airline | Risk Score | Risk Tier | % Negative Tweets |
-|---|---|---|---|
-| US Airways | 100.0 | 🔴 High Risk | 72.5% |
-| American | 92.3 | 🔴 High Risk | 68.9% |
-| United | 76.5 | 🔴 High Risk | 62.6% |
-| Southwest | 29.5 | 🟢 Low Risk | 47.1% |
-| Delta | 5.6 | 🟢 Low Risk | 39.6% |
-| Virgin America | 0.0 | 🟢 Low Risk | 39.1% |
-
----
-
-## 🔍 Key Findings
-
-- **RoBERTa outperforms human labels** — identified mislabeled tweets (e.g. "added commercials... tacky" labeled positive, predicted negative at 92% confidence)
-- **US Airways highest churn risk** with 72.5% negative tweet rate
-- **Virgin America lowest risk** with highest positive sentiment ratio
-- **Peak complaint hours: 8am–2pm** — actionable for customer service staffing
-- **MLflow tracked 5 experiment runs** comparing XGBoost, Random Forest, and Logistic Regression
-
----
-
-## 🛠️ Tech Stack
-
-| Layer | Tools |
-|---|---|
-| **NLP Model** | HuggingFace Transformers (RoBERTa — trained on 58M tweets) |
-| **ML Framework** | XGBoost, Scikit-learn |
-| **Experiment Tracking** | MLflow |
-| **Explainability** | SHAP |
-| **API** | FastAPI + Uvicorn |
-| **Data Processing** | Pandas, NumPy |
-| **Visualization** | Matplotlib, Seaborn |
-
----
-
-## 📡 API Endpoints
+## API Endpoints
 
 | Method | Endpoint | Description |
-|---|---|---|
-| GET | `/` | API info |
-| GET | `/health` | Health check |
-| POST | `/predict` | Single tweet sentiment |
-| POST | `/predict/batch` | Batch tweet analysis |
-| GET | `/risk-scores` | All airline risk scores |
-| GET | `/risk-scores/{airline}` | Specific airline risk |
+| --- | --- | --- |
+| GET | `/` | API metadata |
+| GET | `/health` | Service health check |
+| POST | `/predict` | Single tweet sentiment analysis |
+| POST | `/predict/batch` | Batch sentiment analysis |
+| GET | `/risk-scores` | Airline-level risk scores |
+| GET | `/risk-scores/{airline}` | Risk details for one airline |
 
-## 📈 Sample API Response
+## Example Response
 
 ```json
-POST /predict
 {
-  "text": "US Airways lost my baggage AGAIN. Worst airline ever!"
-}
-
-Response:
-{
+  "text": "US Airways lost my baggage again.",
   "sentiment": "negative",
   "confidence": 0.9557,
-  "risk_contribution": "High — negative sentiment increases churn risk"
+  "risk_contribution": "High risk contribution from negative sentiment"
 }
 ```
 
----
+## Repository Structure
 
-## 🚀 Quick Start
+```text
+fan-churn-prediction/
+|-- data/
+|   |-- Tweets.csv
+|   |-- tweets_with_sentiment.csv
+|   |-- airline_risk_scores_final.csv
+|   |-- eda_plots.png
+|   |-- risk_dashboard.png
+|   |-- risk_scores_final.png
+|   |-- shap_final.png
+|   `-- confusion_matrix.png
+|-- notebooks/
+|   `-- 01_EDA_and_Sentiment.ipynb
+|-- src/
+|   `-- app.py
+|-- requirements.txt
+`-- README.md
+```
+
+## Installation
 
 ```bash
-git clone https://github.com/pavankalmanoor/fan-churn-prediction
+git clone https://github.com/pavankalmanoor/fan-churn-prediction.git
 cd fan-churn-prediction
-python3 -m venv venv
-source venv/bin/activate
+python3 -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
+```
+
+## Running the API
+
+```bash
 uvicorn src.app:app --reload
-open http://localhost:8000/docs
 ```
 
----
+Then open `http://localhost:8000/docs` for the generated API documentation.
 
-## 📁 Project Structure
+## Technical Stack
 
-```
-fan-churn-prediction/
-├── data/
-│   ├── Tweets.csv                      # Raw data (14,640 tweets)
-│   ├── tweets_with_sentiment.csv       # RoBERTa predictions
-│   ├── airline_risk_scores_final.csv   # Risk scores
-│   ├── eda_plots.png                   # EDA visualizations
-│   ├── risk_dashboard.png              # 4-panel risk dashboard
-│   ├── risk_scores_final.png           # Airline risk bar chart
-│   ├── shap_final.png                  # SHAP feature importance
-│   └── confusion_matrix.png           # Model evaluation
-├── notebooks/
-│   └── 01_EDA_and_Sentiment.ipynb     # Full analysis pipeline
-├── src/
-│   └── app.py                          # FastAPI application
-├── mlruns/                             # MLflow experiment logs
-├── requirements.txt
-└── README.md
-```
+| Layer | Tools |
+| --- | --- |
+| NLP model | Hugging Face Transformers (RoBERTa) |
+| Machine learning | XGBoost, scikit-learn |
+| Experiment tracking | MLflow |
+| Explainability | SHAP |
+| API | FastAPI, Uvicorn |
+| Data processing | Pandas, NumPy |
+| Visualization | Matplotlib, Seaborn |
 
----
+## Notes
 
-## 💡 Interview Talking Points
-
-**Why RoBERTa over VADER?**  
-RoBERTa is trained on 58M tweets — domain-specific and captures sarcasm better than lexicon-based approaches. Demonstrated by catching mislabeled sentiment in the dataset.
-
-**Data leakage detection**  
-Identified and fixed target leakage during feature engineering — airline-level aggregates computed from training data only, not leaked from test set.
-
-**Production design**  
-API loads model once at startup, serves inference in under 100ms. 6 documented endpoints with Swagger UI.
-
-**MLflow tracking**  
-Every experiment logged with parameters, metrics, and model artifacts — supports model governance and reproducibility.
+This project is best interpreted as a portfolio-quality NLP system rather than a production deployment. A real deployment would require stricter monitoring, rate limiting, model artifact management, and a reproducible serving pipeline.
